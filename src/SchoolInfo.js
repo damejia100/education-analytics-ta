@@ -1,5 +1,6 @@
 import React from 'react'
 import Axios from 'axios'
+import './App.css';
 
 class SchoolInfo extends React.Component {
   constructor () {
@@ -10,7 +11,9 @@ class SchoolInfo extends React.Component {
       state: '',
       zip: '',
       link: '',
-      enrolled: 0
+      enrolled: 0,
+      programs: {},
+      race_ethnicity: {}
     }
   }
 
@@ -20,6 +23,7 @@ class SchoolInfo extends React.Component {
 
       const results = data.results[0]
 
+      // console.log("results>>>", results)
 
       this.setState({
         name: results.school.name,
@@ -27,8 +31,11 @@ class SchoolInfo extends React.Component {
         state: results.school.state,
         zip: results.school.zip,
         link: results.school.school_url,
-        enrolled: results.latest.student.enrollment.grad_12_month + results.latest.student.enrollment.undergrad_12_month
+        enrolled: results.latest.student.enrollment.grad_12_month + results.latest.student.enrollment.undergrad_12_month,
+        programs: results.latest.academics.program_percentage,
+        race_ethnicity: results.latest.student.demographics.race_ethnicity
       })
+      console.log('this.state>>>', this.state)
     } catch (error) {
       console.log(error)
     }
@@ -38,8 +45,16 @@ class SchoolInfo extends React.Component {
     return (
       <div>
         <h1>{this.state.name}</h1>
-        <h3>{this.state.city}, {this.state.state}, {this.state.zip}</h3>
+        <h2>{this.state.city}, {this.state.state}, {this.state.zip}</h2>
         Total Enrolled (undergrad + grad): {this.state.enrolled}
+        <a
+          className="school-link"
+          href={this.state.link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visit School Site
+        </a>
       </div>
     )
   }
