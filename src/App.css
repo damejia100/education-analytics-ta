@@ -16,3 +16,12 @@
 .App-link {
   color: #61dafb;
 }
+
+.pie-charts {
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 48px 0;
+}
