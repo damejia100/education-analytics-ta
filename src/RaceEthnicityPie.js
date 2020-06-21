@@ -3,6 +3,11 @@ import './App.css';
 import { VictoryPie } from 'victory';
 
 const RaceEthnicityPie = (props) => {
+
+  const race_ethnicity_data = props.race_ethnicity.map(element => {
+    return { x: element[0], y: element[1] };
+  })
+
   return (
     <div className="race-ethnicity-pie">
         <h3>Race and Ethnicity</h3>
@@ -12,14 +17,7 @@ const RaceEthnicityPie = (props) => {
           standalone={false}
           width={300} height={300}
           innerRadius={50}
-            data={[
-              { x: "white", y: 0.028 },
-              { x: "asian", y: 0.0266 },
-              { x: "spanish", y: 0.1419 }
-            ]}
-            animate={{
-              duration: 2000
-            }}
+          data={race_ethnicity_data}
           />
         </svg>
     </div>

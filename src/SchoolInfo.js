@@ -15,7 +15,7 @@ class SchoolInfo extends React.Component {
       link: '',
       enrolled: 0,
       programs: [],
-      race_ethnicity: {}
+      race_ethnicity: []
     }
   }
 
@@ -33,9 +33,9 @@ class SchoolInfo extends React.Component {
         link: results.school.school_url,
         enrolled: results.latest.student.enrollment.grad_12_month + results.latest.student.enrollment.undergrad_12_month,
         programs: Object.entries(results.latest.academics.program_percentage),
-        race_ethnicity: results.latest.student.demographics.race_ethnicity
+        race_ethnicity: Object.entries(results.latest.student.demographics.race_ethnicity)
       })
-      console.log('this.state>>>', this.state)
+      console.log('this.state>>', this.state)
     } catch (error) {
       console.log(error)
     }
@@ -44,9 +44,6 @@ class SchoolInfo extends React.Component {
   render() {
     return (
       <div className="school-info">
-        {/* <h1>University of Wisconsin-Madison</h1>
-        <h2>Madison, WI, 53706-1380</h2>
-        <p>Students enrolled: 46827</p> */}
         <h1>{this.state.name}</h1>
         <h2>{this.state.city}, {this.state.state}, {this.state.zip}</h2>
         <p>Total Enrolled (undergrad + grad): {this.state.enrolled}</p>
@@ -59,7 +56,7 @@ class SchoolInfo extends React.Component {
         </a>
         <div className="pie-charts">
           <ProgramPie programs={this.state.programs}/>
-          <RaceEthnicityPie programs={this.state.race_ethnicity}/>
+          <RaceEthnicityPie race_ethnicity={this.state.race_ethnicity}/>
         </div>
       </div>
     )
