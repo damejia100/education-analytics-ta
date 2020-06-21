@@ -4,7 +4,7 @@ import './App.css';
 function RaceEthnicityPie() {
   return (
     <div className="race-ethnicity-pie">
-        RaceEthnicityPie
+        {/* RaceEthnicityPie */}
     </div>
   );
 }
