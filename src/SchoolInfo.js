@@ -23,8 +23,6 @@ class SchoolInfo extends React.Component {
 
       const results = data.results[0]
 
-      // console.log("results>>>", results)
-
       this.setState({
         name: results.school.name,
         city: results.school.city,
@@ -43,7 +41,7 @@ class SchoolInfo extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="school-info">
         <h1>{this.state.name}</h1>
         <h2>{this.state.city}, {this.state.state}, {this.state.zip}</h2>
         Total Enrolled (undergrad + grad): {this.state.enrolled}
