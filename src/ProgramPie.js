@@ -2,11 +2,13 @@ import React from 'react'
 import './App.css';
 import { VictoryPie, VictoryTooltip } from 'victory';
 
-const ProgramPie = (props) => {
+const ProgramPie = props => {
 
   const program_data = props.programs.map(element => {
     return { x: element[0], y: element[1] };
   })
+
+  console.log("props.programs>>", props.programs)
 
   return (
     <div className="program-pie">
