@@ -58,6 +58,9 @@ class SchoolInfo extends React.Component {
           <ProgramPie programs={this.state.programs}/>
           <RaceEthnicityPie race_ethnicity={this.state.race_ethnicity}/>
         </div>
+        <div className="graph">
+
+        </div>
       </div>
     )
   }

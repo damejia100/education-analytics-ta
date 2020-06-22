@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css';
-import { VictoryPie } from 'victory';
+import { VictoryPie, VictoryTooltip } from 'victory';
 
 const ProgramPie = (props) => {
 
@@ -10,16 +10,20 @@ const ProgramPie = (props) => {
 
   return (
     <div className="program-pie">
-        <h3>Programs</h3>
-        <svg width={300} height={300}>
-        <circle cx={150} cy={150} r={25} fill="#c43a31"/>
-          <VictoryPie
-          standalone={false}
-          width={300} height={300}
-          innerRadius={50}
-          data={program_data}
-          />
-        </svg>
+      <h3>Programs</h3>
+      <VictoryPie
+        data={program_data}
+        colorScale={[
+          "#FFF59D",
+          '#F4511E',
+          "#DCE775",
+          "#8BC34A",
+          "#00796B",
+          "#006064"
+        ]}
+
+      />
+
     </div>
   );
 }

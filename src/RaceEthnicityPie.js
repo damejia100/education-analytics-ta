@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css';
-import { VictoryPie } from 'victory';
+import { VictoryPie, VictoryChart, VictoryLegend } from 'victory';
 
 const RaceEthnicityPie = (props) => {
 
@@ -11,15 +11,36 @@ const RaceEthnicityPie = (props) => {
   return (
     <div className="race-ethnicity-pie">
         <h3>Race and Ethnicity</h3>
-        <svg width={300} height={300}>
-        <circle cx={150} cy={150} r={25} fill="#c43a31"/>
-          <VictoryPie
-          standalone={false}
-          width={300} height={300}
-          innerRadius={50}
-          data={race_ethnicity_data}
+
+        {/* <VictoryChart domain={[0, 10]}>
+          <VictoryLegend x={125} y={50}
+            title="Legend"
+            centerTitle
+            orientation="horizontal"
+            gutter={20}
+            style={{ border: { stroke: "black" }, title: {fontSize: 20 } }}
+            data={race_ethnicity_data}
           />
-        </svg>
+          <VictoryPie
+            data={race_ethnicity_data}
+            height={500}
+            width={500}
+            colorScale={["tomato", "orange", "gold", "cyan", "navy" ]}
+          />
+        </VictoryChart> */}
+
+        <VictoryPie
+          data={race_ethnicity_data}
+          colorScale={[
+            "#FFF59D",
+            '#F4511E',
+            "#DCE775",
+            "#8BC34A",
+            "#00796B",
+            "#006064"
+          ]}
+          // colorScale={["tomato", "orange", "gold", "cyan", "navy" ]}
+        />
     </div>
   );
 }
