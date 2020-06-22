@@ -20,8 +20,13 @@
 .pie-charts {
   display: flex;
   flex: 1;
+  flex-direction: column;
   justify-content: space-evenly;
-  flex-direction: row;
   flex-wrap: wrap;
   padding: 48px 0;
+}
+
+.program-pie, .race-ethnicity-pie {
+  width: 500px;
+  height: 500px;
 }
