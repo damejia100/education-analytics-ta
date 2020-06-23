@@ -4,6 +4,7 @@ import './App.css';
 import ProgramPie from './ProgramPie'
 import RaceEthnicityPie from './RaceEthnicityPie'
 import GenderGraph from './GenderGraph'
+import { CSVLink, CSVDownload } from "react-csv";
 
 const apiLink = 'https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=lWKocdu0x0mLqDjupgrI873ZV2Nxtdde29bvOdSz'
 
@@ -78,13 +79,16 @@ class SchoolInfo extends React.Component {
           Visit School Site
         </a>
 
-        <div className="cta-buttongs">
-          <button
-            className="button"
-            type="submit"
-            onclick="window.open('file.doc')">
-              Download!
-          </button>
+        <div>
+          <button className="button" onClick={this.fetchData}>Download Data</button>
+
+          <CSVLink
+            data={this.state.data}
+            filename="data.csv"
+            className="hidden"
+            ref={this.csvLink}
+            target="_blank"
+          />
         </div>
 
         <div className="pie-charts">
