@@ -7,15 +7,13 @@ const GenderGraph = props => {
   const genderArr =  Object.entries(props.gender)
 
   const genderDataToFeed = genderArr => {
-
     const gender_data = []
 
     const womenData = {
       id: 'Women',
-      color: "#FFF59D",
+      color: "#8BC34A",
       data: []
     }
-
     const menData = {
       id: 'Men',
       color: "#F4511E",
@@ -27,24 +25,27 @@ const GenderGraph = props => {
 
       if (element[1].student) {
 
-       let womenDataRecord = {
-          x: element[0],
-          y: element[1].student.demographics.women
-        }
-        womenData.data.push(womenDataRecord)
-        womenDataRecord = {}
+       if (element[1].student.demographics.women && element[1].student.demographics.men) {
 
-        let menDataRecord = {
+        let womenDataPoint = {
           x: element[0],
-          y: element[1].student.demographics.men
+          y: `${Math.round(element[1].student.demographics.women*100)}%`
         }
-        menData.data.push(menDataRecord)
-        womenDataRecord = {}
+        womenData.data.push(womenDataPoint)
+        womenDataPoint = {}
+
+        let menDataPoint = {
+          x: element[0],
+          y: `${Math.round(element[1].student.demographics.men*100)}%`
+        }
+        menData.data.push(menDataPoint)
+        menDataPoint = {}
+       }
       }
     }
     gender_data.push(womenData)
     gender_data.push(menData)
-
+    console.log('gender_data>>', gender_data)
     return gender_data
   }
 
@@ -55,15 +56,13 @@ const GenderGraph = props => {
         data={genderDataToFeed(genderArr)}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
         xScale={{ type: 'point' }}
-        yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
-        axisTop={null}
-        axisRight={null}
+        yScale={{ type: 'linear', min: 1, max: 100, stacked: true, reverse: false }}
         axisBottom={{
             orient: 'bottom',
             tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: 'transportation',
+            tickPadding: 1,
+            tickRotation: -90,
+            legend: 'Yea',
             legendOffset: 36,
             legendPosition: 'middle'
         }}
@@ -72,12 +71,11 @@ const GenderGraph = props => {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'count',
+            legend: 'Percentage',
             legendOffset: -40,
             legendPosition: 'middle'
         }}
-        colors={{ scheme: 'nivo' }}
-        pointSize={10}
+        pointSize={8}
         pointColor={{ theme: 'background' }}
         pointBorderWidth={2}
         pointBorderColor={{ from: 'serieColor' }}

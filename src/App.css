@@ -25,6 +25,6 @@
   flex-wrap: wrap;
 }
 
-.program-pie, .race-ethnicity-pie {
+.program-pie, .race-ethnicity-pie, .gender-pie {
   height: 500px;
 }
