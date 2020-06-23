@@ -5,9 +5,9 @@ import { ResponsivePie } from '@nivo/pie'
 const ProgramPie = props => {
 
   const program_data = props.programs.map(element => {
-    //removes _ from label
     const formattedLabel = element[0].replace('_', ' ')
-    return { id: formattedLabel, label: formattedLabel, value: element[1] };
+    const percentage = Math.round(element[1]*100)
+    return { id: formattedLabel, label: formattedLabel, value: percentage};
   })
 
   return (

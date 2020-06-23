@@ -3,6 +3,7 @@ import Axios from 'axios'
 import './App.css';
 import ProgramPie from './ProgramPie'
 import RaceEthnicityPie from './RaceEthnicityPie'
+import GenderGraph from './GenderGraph'
 
 const apiLink = 'https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=lWKocdu0x0mLqDjupgrI873ZV2Nxtdde29bvOdSz'
 
@@ -17,7 +18,8 @@ class SchoolInfo extends React.Component {
       link: '',
       enrolled: 0,
       programs: [],
-      race_ethnicity: []
+      race_ethnicity: [],
+      gender: []
     }
     this.removeNulls = this.removeNulls.bind(this)
   }
@@ -36,9 +38,10 @@ class SchoolInfo extends React.Component {
     try {
       const {data} = await Axios.get(apiLink)
 
+      console.log('data.results>>>', data.results)
+
       //isolate school details
       const schoolInfo = data.results[0].school
-
       //isolate data from the latest year
       const latestData = data.results[0].latest
 
@@ -53,10 +56,11 @@ class SchoolInfo extends React.Component {
         link: schoolInfo.school_url,
         enrolled: latestData.student.enrollment.grad_12_month + latestData.student.enrollment.undergrad_12_month,
         programs: Object.entries(latestData.academics.program_percentage),
-        race_ethnicity: Object.entries(race_demographics)
+        race_ethnicity: Object.entries(race_demographics),
+        gender: data.results[0]
       })
 
-      console.log('this.state>>>', this.state)
+      // console.log('this.state>>>', this.state)
     } catch (error) {
       console.log(error)
     }
@@ -72,6 +76,7 @@ class SchoolInfo extends React.Component {
           className="school-link"
           href={this.state.link}
           target="_blank"
+          rel="noopener noreferrer"
         >
           Visit School Site
         </a>
@@ -79,8 +84,9 @@ class SchoolInfo extends React.Component {
           <ProgramPie programs={this.state.programs}/>
           <RaceEthnicityPie race_ethnicity={this.state.race_ethnicity}/>
         </div>
-        <div className="graph">
 
+        <div className="graph">
+          <GenderGraph gender={this.state.gender}/>
         </div>
       </div>
     )

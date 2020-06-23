@@ -6,7 +6,8 @@ const RaceEthnicityPie = props => {
 
   const race_ethnicity_data = props.race_ethnicity.map(element => {
     const formattedLabel = element[0].replace('_', ' ')
-    return { id: formattedLabel, label: formattedLabel, value: element[1] };
+    const percentage = Math.round(element[1]*100)
+    return { id: formattedLabel, label: formattedLabel, value: percentage };
   })
 
   return (
@@ -37,6 +38,7 @@ const RaceEthnicityPie = props => {
         animate={true}
         motionStiffness={90}
         motionDamping={15}
+
     />
     </div>
   );
