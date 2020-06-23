@@ -4,6 +4,8 @@ import './App.css';
 import ProgramPie from './ProgramPie'
 import RaceEthnicityPie from './RaceEthnicityPie'
 
+const apiLink = 'https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=lWKocdu0x0mLqDjupgrI873ZV2Nxtdde29bvOdSz'
+
 class SchoolInfo extends React.Component {
   constructor () {
     super()
@@ -17,25 +19,44 @@ class SchoolInfo extends React.Component {
       programs: [],
       race_ethnicity: []
     }
+    this.removeNulls = this.removeNulls.bind(this)
+  }
+
+  // removes null values
+  removeNulls(obj) {
+    for (let key in obj) {
+      if (obj[key] === null) {
+        delete obj[key]
+      }
+    }
+    return obj
   }
 
   async componentDidMount() {
     try {
-      const {data} = await Axios.get('https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=lWKocdu0x0mLqDjupgrI873ZV2Nxtdde29bvOdSz')
+      const {data} = await Axios.get(apiLink)
 
-      const results = data.results[0]
+      //isolate school details
+      const schoolInfo = data.results[0].school
+
+      //isolate data from the latest year
+      const latestData = data.results[0].latest
+
+      //removes null values from race-ethnicity
+      const race_demographics = this.removeNulls(latestData.student.demographics.race_ethnicity)
 
       this.setState({
-        name: results.school.name,
-        city: results.school.city,
-        state: results.school.state,
-        zip: results.school.zip,
-        link: results.school.school_url,
-        enrolled: results.latest.student.enrollment.grad_12_month + results.latest.student.enrollment.undergrad_12_month,
-        programs: Object.entries(results.latest.academics.program_percentage),
-        race_ethnicity: Object.entries(results.latest.student.demographics.race_ethnicity)
+        name: schoolInfo.name,
+        city: schoolInfo.city,
+        state: schoolInfo.state,
+        zip: schoolInfo.zip,
+        link: schoolInfo.school_url,
+        enrolled: latestData.student.enrollment.grad_12_month + latestData.student.enrollment.undergrad_12_month,
+        programs: Object.entries(latestData.academics.program_percentage),
+        race_ethnicity: Object.entries(race_demographics)
       })
-      console.log('this.state>>', this.state)
+
+      console.log('this.state>>>', this.state)
     } catch (error) {
       console.log(error)
     }
