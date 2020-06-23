@@ -4,27 +4,55 @@ import { ResponsiveLine } from '@nivo/line'
 
 const GenderGraph = props => {
 
-  const arr =  Object.entries(props.gender)
+  const genderArr =  Object.entries(props.gender)
 
-  const gender_data = arr.filter(element => {
-      console.log('element>>>', element)
+  const genderDataToFeed = genderArr => {
+
+    const gender_data = []
+
+    const womenData = {
+      id: 'Women',
+      color: "#FFF59D",
+      data: []
+    }
+
+    const menData = {
+      id: 'Men',
+      color: "#F4511E",
+      data: []
+    }
+
+    for (let i=0; i<genderArr.length; i++) {
+      let element = genderArr[i]
 
       if (element[1].student) {
-        const demData = element[1].student.demographics.men
-        return {
-          id: 'Men', data: [{"x": element[0], "y": menDem}]
+
+       let womenDataRecord = {
+          x: element[0],
+          y: element[1].student.demographics.women
         }
+        womenData.data.push(womenDataRecord)
+        womenDataRecord = {}
+
+        let menDataRecord = {
+          x: element[0],
+          y: element[1].student.demographics.men
+        }
+        menData.data.push(menDataRecord)
+        womenDataRecord = {}
       }
-  })
+    }
+    gender_data.push(womenData)
+    gender_data.push(menData)
 
-  console.log('gender_data>>>', gender_data)
-
+    return gender_data
+  }
 
   return (
     <div className="gender-pie">
-
-      {/* <ResponsiveLine
-        data={data}
+      <h3>Gender Breakdown</h3>
+      <ResponsiveLine
+        data={genderDataToFeed(genderArr)}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
@@ -82,7 +110,7 @@ const GenderGraph = props => {
                 ]
             }
         ]}
-    /> */}
+    />
     </div>
   )
 
