@@ -38,8 +38,6 @@ class SchoolInfo extends React.Component {
     try {
       const {data} = await Axios.get(apiLink)
 
-      console.log('data.results>>>', data.results)
-
       //isolate school details
       const schoolInfo = data.results[0].school
       //isolate data from the latest year
@@ -60,7 +58,6 @@ class SchoolInfo extends React.Component {
         gender: data.results[0]
       })
 
-      // console.log('this.state>>>', this.state)
     } catch (error) {
       console.log(error)
     }
@@ -80,6 +77,16 @@ class SchoolInfo extends React.Component {
         >
           Visit School Site
         </a>
+
+        <div className="cta-buttongs">
+          <button
+            className="button"
+            type="submit"
+            onclick="window.open('file.doc')">
+              Download!
+          </button>
+        </div>
+
         <div className="pie-charts">
           <ProgramPie programs={this.state.programs}/>
           <RaceEthnicityPie race_ethnicity={this.state.race_ethnicity}/>
@@ -88,6 +95,7 @@ class SchoolInfo extends React.Component {
         <div className="graph">
           <GenderGraph gender={this.state.gender}/>
         </div>
+
       </div>
     )
   }

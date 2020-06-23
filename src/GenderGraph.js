@@ -14,6 +14,7 @@ const GenderGraph = props => {
       color: "#8BC34A",
       data: []
     }
+
     const menData = {
       id: 'Men',
       color: "#F4511E",
@@ -43,9 +44,7 @@ const GenderGraph = props => {
        }
       }
     }
-    gender_data.push(womenData)
-    gender_data.push(menData)
-    console.log('gender_data>>', gender_data)
+    gender_data.push(womenData, menData)
     return gender_data
   }
 
@@ -56,13 +55,13 @@ const GenderGraph = props => {
         data={genderDataToFeed(genderArr)}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
         xScale={{ type: 'point' }}
-        yScale={{ type: 'linear', min: 1, max: 100, stacked: true, reverse: false }}
+        yScale={{ type: 'linear', min: 1, max: 100, stacked: false, reverse: false }}
         axisBottom={{
             orient: 'bottom',
             tickSize: 5,
             tickPadding: 1,
             tickRotation: -90,
-            legend: 'Yea',
+            legend: 'Year',
             legendOffset: 36,
             legendPosition: 'middle'
         }}

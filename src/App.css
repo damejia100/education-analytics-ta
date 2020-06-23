@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  width: fit-content;
 }
 
 .App-header {
@@ -26,5 +27,15 @@
 }
 
 .program-pie, .race-ethnicity-pie, .gender-pie {
-  height: 500px;
+  height: 400px;
+}
+
+.button {
+  padding: 16px 8px;
+  background-color: rgb(0, 67, 70);
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  font-size: 14px;
+  min-width: 100px;
 }
