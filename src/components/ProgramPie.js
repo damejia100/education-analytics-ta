@@ -32,7 +32,7 @@ const ProgramPie = props => {
           "#095CC5",
           "#00796B"
         ]}
-        radialLabelsSkipAngle={8}
+        radialLabelsSkipAngle={5}
         radialLabelsTextXOffset={6}
         radialLabelsTextColor="#333333"
         radialLabelsLinkOffset={0}

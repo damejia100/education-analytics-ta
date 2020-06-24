@@ -55,7 +55,7 @@ class SchoolInfo extends React.Component {
           <div className="school-details">
             <h1>{this.state.name}</h1>
             <h2>{this.state.city}, {this.state.state}, {this.state.zip}</h2>
-            <p>Total Enrolled (undergrad + grad): {this.state.enrolled}</p>
+            <p>Total Enrolled: {this.state.enrolled}</p>
             <a
               className="school-link"
               href={`//${this.state.link}`}

@@ -83,6 +83,10 @@ const GenderGraph = props => {
         pointLabel="y"
         pointLabelYOffset={-12}
         useMesh={true}
+        colors={[
+          '#F4511E',
+          "#8BC34A",
+        ]}
         legends={[
             {
                 anchor: 'bottom-right',

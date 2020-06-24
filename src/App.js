@@ -11,7 +11,7 @@ const App = () => {
       <Pdf
         targetRef={ref}
         filename="uw-madison-metrics.pdf">
-        {({ toPdf }) => <button className="button" onClick={toPdf}>Generate PDF</button>}
+        {({ toPdf }) => <button className="button" onClick={toPdf}>Download PDF</button>}
       </Pdf>
 
       <button className="button" onClick={() => window.print()}>Print Page</button>

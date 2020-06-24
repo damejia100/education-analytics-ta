@@ -6,6 +6,7 @@ import { formatLabel, percentage, makeEntries } from '../Helpers.js'
 const RaceEthnicityPie = props => {
 
   const race_ethnicity_data = makeEntries(props.race_ethnicity).map(element => {
+
     return {
       id: formatLabel(element[0]),
       label: formatLabel(element[0]),
@@ -28,22 +29,20 @@ const RaceEthnicityPie = props => {
           "#00796B",
           "#b02792",
           "#0AADB9"
-
         ]}
         radialLabelsSkipAngle={8}
         radialLabelsTextXOffset={6}
         radialLabelsTextColor="#333333"
         radialLabelsLinkOffset={0}
-        radialLabelsLinkDiagonalLength={16}
-        radialLabelsLinkHorizontalLength={24}
+        radialLabelsLinkDiagonalLength={8}
+        radialLabelsLinkHorizontalLength={16}
         radialLabelsLinkStrokeWidth={1}
         radialLabelsLinkColor={{ from: 'color' }}
         enableSlicesLabels={false}
-        //animate={true}
+        animate={true}
         motionStiffness={90}
         motionDamping={15}
         sortByValue={true}
-
     />
     </div>
   );
