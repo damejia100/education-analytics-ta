@@ -1,5 +1,5 @@
 import React from 'react'
-import './../App.css';
+import './../App.css'
 import { ResponsivePie } from '@nivo/pie'
 import { formatLabel, percentage, makeEntries } from '../Helpers.js'
 
@@ -16,8 +16,8 @@ const RaceEthnicityPie = props => {
 
   return (
     <div className="race-ethnicity-pie">
-    <h3>Race and Ethnic Demographics</h3>
-    <ResponsivePie
+      <h3>Race and Ethnic Demographics</h3>
+      <ResponsivePie
         data={race_ethnicity_data}
         margin={{ top: 0, right: 125, bottom: 0, left: 125 }}
         pixelRatio={2}
@@ -43,7 +43,7 @@ const RaceEthnicityPie = props => {
         motionStiffness={90}
         motionDamping={15}
         sortByValue={true}
-    />
+      />
     </div>
   );
 }

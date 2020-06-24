@@ -1,11 +1,10 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
 import SchoolInfo from './components/SchoolInfo'
-import Pdf from "react-to-pdf";
+import Pdf from "react-to-pdf"
 import DownloadButton from './components/DownloadButton'
 
 const ref = React.createRef();
-
 
 const App = () => {
   return (
@@ -19,10 +18,9 @@ const App = () => {
           <button className="button" onClick={toPdf}>Download PDF</button>}
         </Pdf>
 
-        <button className="button" onClick={() => window.print()}>Print Page</button>
-
         <DownloadButton />
 
+        <button className="button" onClick={() => window.print()}>Print Page</button>
 
       </div>
 

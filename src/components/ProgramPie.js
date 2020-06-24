@@ -1,5 +1,5 @@
 import React from 'react'
-import './../App.css';
+import './../App.css'
 import { ResponsivePie } from '@nivo/pie'
 import { formatLabel, percentage, makeEntries } from '../Helpers.js'
 

@@ -1,11 +1,10 @@
 import React from 'react'
 import Axios from 'axios'
-import './../App.css';
+import './../App.css'
+import { apiLink } from '../Helpers.js'
 import ProgramPie from './ProgramPie'
 import RaceEthnicityPie from './RaceEthnicityPie'
 import GenderGraph from './GenderGraph'
-
-const apiLink = `https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=${process.env.REACT_APP_DATA_GOV_API_KEY}`
 
 class SchoolInfo extends React.Component {
   constructor () {
@@ -51,36 +50,34 @@ class SchoolInfo extends React.Component {
 
   render() {
     return (
-        <div className="school-data">
-          <div className="school-details">
-            <h1>{this.state.name}</h1>
-            <h2>{this.state.city}, {this.state.state}, {this.state.zip}</h2>
-            <p>Total Enrolled: {this.state.enrolled}</p>
-            <a
-              className="school-link"
-              href={`//${this.state.link}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Visit School Site
-            </a>
+      <div className="school-data">
+        <div className="school-details">
+          <h1>{this.state.name}</h1>
+          <h2>{this.state.city}, {this.state.state}, {this.state.zip}</h2>
+          <p>Total Enrolled: {this.state.enrolled}</p>
+          <a
+            className="school-link"
+            href={`//${this.state.link}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit School Site
+          </a>
+        </div>
+
+        <div className="school-visuals">
+          <div className="pie-charts">
+            <ProgramPie programs={this.state.programs}/>
+            <RaceEthnicityPie race_ethnicity={this.state.race_ethnicity}/>
           </div>
 
-
-          <div className="school-visuals">
-            <div className="pie-charts">
-              <ProgramPie programs={this.state.programs}/>
-              <RaceEthnicityPie race_ethnicity={this.state.race_ethnicity}/>
-            </div>
-
-            <div className="graph">
-              <GenderGraph gender={this.state.gender}/>
-            </div>
+          <div className="graph">
+            <GenderGraph gender={this.state.gender}/>
           </div>
         </div>
+      </div>
     )
   }
-
 }
 
 export default  SchoolInfo;
