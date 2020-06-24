@@ -1,11 +1,13 @@
 import React from 'react'
-import './App.css';
+import './../App.css';
 import { ResponsiveLine } from '@nivo/line'
+import { percentage, makeEntries } from '../Helpers.js'
 
 const GenderGraph = props => {
 
-  const genderArr =  Object.entries(props.gender)
+  const genderArr =  makeEntries(props.gender)
 
+  //formats the gender array into required data format
   const genderDataToFeed = genderArr => {
     const gender_data = []
 
@@ -30,14 +32,14 @@ const GenderGraph = props => {
 
         let womenDataPoint = {
           x: element[0],
-          y: `${Math.round(element[1].student.demographics.women*100)}%`
+          y: percentage(element[1].student.demographics.women)
         }
         womenData.data.push(womenDataPoint)
         womenDataPoint = {}
 
         let menDataPoint = {
           x: element[0],
-          y: `${Math.round(element[1].student.demographics.men*100)}%`
+          y: percentage(element[1].student.demographics.men)
         }
         menData.data.push(menDataPoint)
         menDataPoint = {}

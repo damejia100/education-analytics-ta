@@ -1,10 +1,9 @@
 import React from 'react'
 import Axios from 'axios'
-import './App.css';
+import './../App.css';
 import ProgramPie from './ProgramPie'
 import RaceEthnicityPie from './RaceEthnicityPie'
 import GenderGraph from './GenderGraph'
-import { CSVLink, CSVDownload } from "react-csv";
 
 const apiLink = 'https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=lWKocdu0x0mLqDjupgrI873ZV2Nxtdde29bvOdSz'
 
@@ -22,17 +21,6 @@ class SchoolInfo extends React.Component {
       race_ethnicity: [],
       gender: []
     }
-    this.removeNulls = this.removeNulls.bind(this)
-  }
-
-  // removes null values
-  removeNulls(obj) {
-    for (let key in obj) {
-      if (obj[key] === null) {
-        delete obj[key]
-      }
-    }
-    return obj
   }
 
   async componentDidMount() {
@@ -41,11 +29,9 @@ class SchoolInfo extends React.Component {
 
       //isolate school details
       const schoolInfo = data.results[0].school
+
       //isolate data from the latest year
       const latestData = data.results[0].latest
-
-      //removes null values from race-ethnicity
-      const race_demographics = this.removeNulls(latestData.student.demographics.race_ethnicity)
 
       this.setState({
         name: schoolInfo.name,
@@ -54,11 +40,10 @@ class SchoolInfo extends React.Component {
         zip: schoolInfo.zip,
         link: schoolInfo.school_url,
         enrolled: latestData.student.enrollment.grad_12_month + latestData.student.enrollment.undergrad_12_month,
-        programs: Object.entries(latestData.academics.program_percentage),
-        race_ethnicity: Object.entries(race_demographics),
+        programs: latestData.academics.program_percentage,
+        race_ethnicity: latestData.student.demographics.race_ethnicity,
         gender: data.results[0]
       })
-
     } catch (error) {
       console.log(error)
     }
@@ -72,24 +57,12 @@ class SchoolInfo extends React.Component {
         <p>Total Enrolled (undergrad + grad): {this.state.enrolled}</p>
         <a
           className="school-link"
-          href={this.state.link}
+          href={`//${this.state.link}`}
           target="_blank"
           rel="noopener noreferrer"
         >
           Visit School Site
         </a>
-
-        <div>
-          <button className="button" onClick={this.fetchData}>Download Data</button>
-
-          <CSVLink
-            data={this.state.data}
-            filename="data.csv"
-            className="hidden"
-            ref={this.csvLink}
-            target="_blank"
-          />
-        </div>
 
         <div className="pie-charts">
           <ProgramPie programs={this.state.programs}/>

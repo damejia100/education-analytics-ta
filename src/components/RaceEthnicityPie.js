@@ -1,13 +1,16 @@
 import React from 'react'
-import './App.css';
+import './../App.css';
 import { ResponsivePie } from '@nivo/pie'
+import { formatLabel, percentage, makeEntries } from '../Helpers.js'
 
 const RaceEthnicityPie = props => {
 
-  const race_ethnicity_data = props.race_ethnicity.map(element => {
-    const formattedLabel = element[0].replace('_', ' ')
-    const percentage = Math.round(element[1]*100)
-    return { id: formattedLabel, label: formattedLabel, value: percentage };
+  const race_ethnicity_data = makeEntries(props.race_ethnicity).map(element => {
+    return {
+      id: formatLabel(element[0]),
+      label: formatLabel(element[0]),
+      value: percentage(element[1])
+    };
   })
 
   return (
@@ -43,30 +46,5 @@ const RaceEthnicityPie = props => {
     </div>
   );
 }
-
-// const RaceEthnicityPie = (props) => {
-
-//   const race_ethnicity_data = props.race_ethnicity.map(element => {
-//     return { x: element[0], y: element[1] };
-//   })
-
-//   return (
-//     <div className="race-ethnicity-pie">
-//         <h3>Race and Ethnicity</h3>
-
-//         <VictoryPie
-//           data={race_ethnicity_data}
-//           colorScale={[
-//             "#FFF59D",
-//             '#F4511E',
-//             "#DCE775",
-//             "#8BC34A",
-//             "#00796B",
-//             "#006064"
-//           ]}
-//         />
-//     </div>
-//   );
-// }
 
 export default RaceEthnicityPie;

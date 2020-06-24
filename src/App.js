@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import SchoolInfo from './SchoolInfo'
+import SchoolInfo from './components/SchoolInfo'
 import Pdf from "react-to-pdf";
 
 const ref = React.createRef();

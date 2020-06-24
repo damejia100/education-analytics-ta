@@ -1,13 +1,17 @@
 import React from 'react'
-import './App.css';
+import './../App.css';
 import { ResponsivePie } from '@nivo/pie'
+import { formatLabel, percentage, makeEntries } from '../Helpers.js'
 
 const ProgramPie = props => {
 
-  const program_data = props.programs.map(element => {
-    const formattedLabel = element[0].replace('_', ' ')
-    const percentage = Math.round(element[1]*100)
-    return { id: formattedLabel, label: formattedLabel, value: percentage};
+  const program_data = makeEntries(props.programs).map(element => {
+
+    return {
+      id: formatLabel(element[0]),
+      label: formatLabel(element[0]),
+      value: percentage(element[1])
+    };
   })
 
   return (
