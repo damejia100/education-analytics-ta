@@ -61,7 +61,7 @@ const GenderGraph = props => {
         axisBottom={{
             orient: 'bottom',
             tickSize: 5,
-            tickPadding: 1,
+            tickPadding: -10,
             tickRotation: -90,
             legend: 'Year',
             legendOffset: 36,

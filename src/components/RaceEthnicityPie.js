@@ -19,7 +19,7 @@ const RaceEthnicityPie = props => {
     <h3>Race and Ethnic Demographics</h3>
     <ResponsivePie
         data={race_ethnicity_data}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+        margin={{ top: 0, right: 125, bottom: 0, left: 125 }}
         pixelRatio={2}
         innerRadius={0.5}
         colors={[

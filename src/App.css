@@ -17,15 +17,10 @@
   flex-direction: column;
 }
 
-.program-pie-section, .race-ethnicity-pie, .gender-pie {
-  height: 400px;
-  padding: 24px 0;
-}
-
-.program-pie-section, .race-ethnicity-pie {
-  display: flex;
-  flex-direction: column;
-  width: auto;
+.program-pie, .race-ethnicity-pie, .gender-pie {
+  height: 450px;
+  width: 100%;
+  padding: 42px 0;
 }
 
 .button {
@@ -44,12 +39,8 @@
   font-weight: bold;
 }
 
-@media only screen and (max-width: 600px) {
-  .pie-charts > div.race-ethnicity-pie > div > div > svg > g {
-    transform: translate(100px, 10px);
-  }
-  .school-visuals > div.pie-charts > div.race-ethnicity-pie > div > div > svg > g {
-    transform: translate(100px, 10px);
+@media only screen and (max-width: 764px) {
+  .program-pie, .race-ethnicity-pie {
+    height: 300px;
   }
 }
-

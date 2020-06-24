@@ -11,15 +11,15 @@ const ProgramPie = props => {
       id: formatLabel(element[0]),
       label: formatLabel(element[0]),
       value: percentage(element[1])
-    };
+    }
   })
 
   return (
-    <div className="program-pie-section">
+    <div className="program-pie" >
       <h3>Academic Programs</h3>
       <ResponsivePie
         data={program_data}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+        margin={{ top: 0, right: 125, bottom: 0, left: 125 }}
         pixelRatio={2}
         innerRadius={0.5}
         colors={[
@@ -45,7 +45,7 @@ const ProgramPie = props => {
         motionStiffness={90}
         motionDamping={15}
         sortByValue={true}
-    />
+        />
 
     </div>
   );
