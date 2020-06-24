@@ -50,7 +50,6 @@ class SchoolInfo extends React.Component {
   }
 
   render() {
-    console.log(process.env.REACT_APP_DATA_GOV_API_KEY)
     return (
         <div className="school-data">
           <div className="school-details">
