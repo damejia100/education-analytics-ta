@@ -1,8 +1,8 @@
 import React from 'react'
 import './App.css'
-import SchoolInfo from './components/SchoolInfo'
+import SchoolData from './components/SchoolData'
 import Pdf from "react-to-pdf"
-import DownloadButton from './components/DownloadButton'
+//import DownloadButton from './components/DownloadButton'
 
 const ref = React.createRef();
 
@@ -17,14 +17,12 @@ const App = () => {
           <button className="button" onClick={toPdf}>Download PDF</button>}
         </Pdf>
 
-        <DownloadButton />
-
         <button className="button" onClick={() => window.print()}>Print Page</button>
 
       </div>
 
         <div className="school-wrapper" ref={ref}>
-          <SchoolInfo/>
+          <SchoolData/>
         </div>
     </div>
   );

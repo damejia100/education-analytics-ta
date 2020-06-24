@@ -2,6 +2,7 @@ import React from 'react'
 import './../App.css'
 import { ResponsiveLine } from '@nivo/line'
 import { percentage, makeEntries } from '../Helpers.js'
+import DownloadButton from './DownloadButton'
 
 const GenderGraph = props => {
 
@@ -51,6 +52,7 @@ const GenderGraph = props => {
   return (
     <div className="gender-pie">
       <h3>Gender Breakdown</h3>
+      <DownloadButton download_data={genderDataToFeed(genderArr)}/>
       <ResponsiveLine
         data={genderDataToFeed(genderArr)}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}

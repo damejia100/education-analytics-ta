@@ -2,6 +2,7 @@ import React from 'react'
 import './../App.css'
 import { ResponsivePie } from '@nivo/pie'
 import { formatLabel, percentage, makeEntries } from '../Helpers.js'
+import DownloadButton from './DownloadButton'
 
 const ProgramPie = props => {
 
@@ -16,6 +17,7 @@ const ProgramPie = props => {
   return (
     <div className="program-pie" >
       <h3>Academic Programs</h3>
+      <DownloadButton download_data={program_data}/>
       <ResponsivePie
         data={program_data}
         margin={{ top: 0, right: 125, bottom: 0, left: 125 }}

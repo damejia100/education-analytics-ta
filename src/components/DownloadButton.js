@@ -1,32 +1,23 @@
 import React from 'react'
-import Axios from 'axios'
 import './../App.css'
 import { saveAs } from 'file-saver'
-import { apiLink } from '../Helpers.js'
 
-async function downloadFile(){
-
-  try {
-    const {data} = await Axios.get(apiLink)
-    const myJsonString = JSON.stringify(data.results);
-    const blob = new Blob([myJsonString], {
-      type: "application/vnd.ms-excel;charset=utf-8"
-    });
-    saveAs(blob, "uw-madison-export.xls");
-
-  } catch (error) {
-    console.log(error)
-    }
+const downloadFile = data => {
+  const header = Object.keys(data[0])
+  let csv = data.map(row => header.map(fieldName => JSON.stringify(row[fieldName])).join(','))
+  csv.unshift(header.join(','))
+  csv = csv.join('\r\n')
+  const blob = new Blob([csv], { type: "application/vnd.ms-excel;charset=utf-8" });
+  saveAs(blob, "uw-madison-export.csv");
 }
 
-const DownloadButton = () => {
+const DownloadButton = props => {
 
   return (
-    <button className="button" onClick={() => downloadFile()}>
+    <button className="button" onClick={() => downloadFile(props.download_data)}>
       Download Data
     </button>
   )
-
 }
 
 export default DownloadButton

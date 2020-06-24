@@ -7,7 +7,7 @@ import RaceEthnicityPie from './RaceEthnicityPie'
 import GenderGraph from './GenderGraph'
 import SchoolDetails from './SchoolDetails'
 
-class SchoolInfo extends React.Component {
+class SchoolData extends React.Component {
   constructor () {
     super()
     this.state = {
@@ -28,10 +28,8 @@ class SchoolInfo extends React.Component {
   async componentDidMount() {
     try {
       const {data} = await Axios.get(apiLink)
-
       //isolate school details
       const schoolInfo = data.results[0].school
-
       //isolate data from the latest year
       const latestData = data.results[0].latest
 
@@ -57,6 +55,7 @@ class SchoolInfo extends React.Component {
     return (
       <div className="school-data">
         <SchoolDetails schoolInfo={this.state.schoolInfo}/>
+        <p>Amounts displayed are percetanges. Hover over smaller slices to see figures.</p>
 
         <div className="school-visuals">
           <div className="pie-charts">
@@ -73,4 +72,4 @@ class SchoolInfo extends React.Component {
   }
 }
 
-export default  SchoolInfo;
+export default  SchoolData;

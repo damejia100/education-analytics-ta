@@ -2,6 +2,7 @@ import React from 'react'
 import './../App.css'
 import { ResponsivePie } from '@nivo/pie'
 import { formatLabel, percentage, makeEntries } from '../Helpers.js'
+import DownloadButton from './DownloadButton'
 
 const RaceEthnicityPie = props => {
 
@@ -16,6 +17,7 @@ const RaceEthnicityPie = props => {
   return (
     <div className="race-ethnicity-pie">
       <h3>Race and Ethnic Demographics</h3>
+      <DownloadButton download_data={race_ethnicity_data}/>
       <ResponsivePie
         data={race_ethnicity_data}
         margin={{ top: 0, right: 125, bottom: 0, left: 125 }}
