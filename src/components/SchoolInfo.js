@@ -5,7 +5,7 @@ import ProgramPie from './ProgramPie'
 import RaceEthnicityPie from './RaceEthnicityPie'
 import GenderGraph from './GenderGraph'
 
-const apiLink = 'https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=lWKocdu0x0mLqDjupgrI873ZV2Nxtdde29bvOdSz'
+const apiLink = `https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=${process.env.REACT_APP_DATA_GOV_API_KEY}`
 
 class SchoolInfo extends React.Component {
   constructor () {
@@ -50,6 +50,7 @@ class SchoolInfo extends React.Component {
   }
 
   render() {
+    console.log(process.env.REACT_APP_DATA_GOV_API_KEY)
     return (
         <div className="school-data">
           <div className="school-details">
