@@ -12,13 +12,13 @@ const GenderGraph = props => {
     const gender_data = []
 
     const womenData = {
-      id: 'Women',
+      id: 'women',
       color: "#8BC34A",
       data: []
     }
 
     const menData = {
-      id: 'Men',
+      id: 'men',
       color: "#F4511E",
       data: []
     }

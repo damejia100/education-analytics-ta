@@ -13,8 +13,9 @@ const App = () => {
         filename="uw-madison-metrics.pdf">
         {({ toPdf }) => <button className="button" onClick={toPdf}>Generate PDF</button>}
       </Pdf>
+
       <button className="button" onClick={() => window.print()}>Print Page</button>
-      <div ref={ref}>
+      <div className="school-wrapper" ref={ref}>
         <SchoolInfo/>
       </div>
     </div>

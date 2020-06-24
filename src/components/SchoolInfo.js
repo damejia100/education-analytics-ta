@@ -51,29 +51,33 @@ class SchoolInfo extends React.Component {
 
   render() {
     return (
-      <div className="school-info">
-        <h1>{this.state.name}</h1>
-        <h2>{this.state.city}, {this.state.state}, {this.state.zip}</h2>
-        <p>Total Enrolled (undergrad + grad): {this.state.enrolled}</p>
-        <a
-          className="school-link"
-          href={`//${this.state.link}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Visit School Site
-        </a>
+        <div className="school-data">
+          <div className="school-details">
+            <h1>{this.state.name}</h1>
+            <h2>{this.state.city}, {this.state.state}, {this.state.zip}</h2>
+            <p>Total Enrolled (undergrad + grad): {this.state.enrolled}</p>
+            <a
+              className="school-link"
+              href={`//${this.state.link}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit School Site
+            </a>
+          </div>
 
-        <div className="pie-charts">
-          <ProgramPie programs={this.state.programs}/>
-          <RaceEthnicityPie race_ethnicity={this.state.race_ethnicity}/>
+
+          <div className="school-visuals">
+            <div className="pie-charts">
+              <ProgramPie programs={this.state.programs}/>
+              <RaceEthnicityPie race_ethnicity={this.state.race_ethnicity}/>
+            </div>
+
+            <div className="graph">
+              <GenderGraph gender={this.state.gender}/>
+            </div>
+          </div>
         </div>
-
-        <div className="graph">
-          <GenderGraph gender={this.state.gender}/>
-        </div>
-
-      </div>
     )
   }
 

@@ -18,18 +18,19 @@ const RaceEthnicityPie = props => {
     <h3>Race and Ethnic Demographics</h3>
     <ResponsivePie
         data={race_ethnicity_data}
-        margin={{ top: 40, right: 200, bottom: 40, left: 80 }}
+        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
         pixelRatio={2}
         innerRadius={0.5}
         colors={[
-          "#FFF59D",
           '#F4511E',
           "#DCE775",
           "#8BC34A",
           "#00796B",
-          "#006064"
+          "#b02792",
+          "#0AADB9"
+
         ]}
-        radialLabelsSkipAngle={10}
+        radialLabelsSkipAngle={8}
         radialLabelsTextXOffset={6}
         radialLabelsTextColor="#333333"
         radialLabelsLinkOffset={0}
@@ -38,9 +39,10 @@ const RaceEthnicityPie = props => {
         radialLabelsLinkStrokeWidth={1}
         radialLabelsLinkColor={{ from: 'color' }}
         enableSlicesLabels={false}
-        animate={true}
+        //animate={true}
         motionStiffness={90}
         motionDamping={15}
+        sortByValue={true}
 
     />
     </div>

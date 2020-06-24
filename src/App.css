@@ -1,30 +1,31 @@
 .App {
-  text-align: center;
   width: fit-content;
 }
 
-.App-header {
-  min-height: 100vh;
+.school-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
-.App-link {
-  color: #61dafb;
+.school-data {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .pie-charts {
   display: flex;
-  flex: 1;
   flex-direction: column;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
 }
 
-.program-pie, .race-ethnicity-pie, .gender-pie {
+.program-pie-section, .race-ethnicity-pie, .gender-pie {
   height: 400px;
+  padding: 40px 0;
+}
+
+.program-pie-section, .race-ethnicity-pie {
+  display: flex;
+  flex-direction: column;
+  width: auto;
 }
 
 .button {
@@ -34,5 +35,16 @@
   border-radius: 4px;
   border: none;
   font-size: 14px;
-  min-width: 100px;
+  min-width: 120px;
+  margin-right: 16px;
 }
+
+@media only screen and (max-width: 600px) {
+  .pie-charts > div.race-ethnicity-pie > div > div > svg > g {
+    transform: translate(100px, 10px);
+  }
+  .school-visuals > div.pie-charts > div.race-ethnicity-pie > div > div > svg > g {
+    transform: translate(100px, 10px);
+  }
+}
+
