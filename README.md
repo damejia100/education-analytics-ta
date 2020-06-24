@@ -16,15 +16,15 @@
 
 3. Navigate to http://localhost:3000/
 
-<b>About the project</b>:
-This single page application is pretty self explanatory. It displays academic program, race and ethnic demographic, and gender data for the University of Wisconsin-Madison.
-<br>
+<b>About the project</b>:<br>
+This responsive single page application is pretty self explanatory. It displays academic program, race and ethnic demographic, and gender data for the University of Wisconsin-Madison.
+<br><br>
 Data for academic programs and race and ethnic demographics are displayed as donut pie charts. Each segment represents a percentage. Hover over smaller slices to see data related to it.
-<br>
-A gender breakdown can be found on the bottom of the page and shows the percentage of men vs. women enrolled year after year.
-<br>
+<br><br>
+A gender breakdown can be found at the bottom of the page and shows the percentage of men vs. women enrolled year after year.
+<br><br>
 Each data visual comes with the option to download the data to csv format.
 
-<b>Tools Used</b>:
+<b>Tools Used</b>:<br>
 This application was primarily built with Javascript and React. Nivo, a data visualization component library, was used for the pies and graph. Finally, Axios was used to request data from Data.gov.
 
