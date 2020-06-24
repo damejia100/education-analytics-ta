@@ -6,7 +6,6 @@ import { formatLabel, percentage, makeEntries } from '../Helpers.js'
 const RaceEthnicityPie = props => {
 
   const race_ethnicity_data = makeEntries(props.race_ethnicity).map(element => {
-
     return {
       id: formatLabel(element[0]),
       label: formatLabel(element[0]),

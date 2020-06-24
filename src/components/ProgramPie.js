@@ -6,7 +6,6 @@ import { formatLabel, percentage, makeEntries } from '../Helpers.js'
 const ProgramPie = props => {
 
   const program_data = makeEntries(props.programs).map(element => {
-
     return {
       id: formatLabel(element[0]),
       label: formatLabel(element[0]),
@@ -46,7 +45,6 @@ const ProgramPie = props => {
         motionDamping={15}
         sortByValue={true}
         />
-
     </div>
   );
 }

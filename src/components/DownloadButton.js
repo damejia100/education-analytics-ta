@@ -17,7 +17,7 @@ async function downloadFile(){
   } catch (error) {
     console.log(error)
     }
-  }
+}
 
 const DownloadButton = () => {
 

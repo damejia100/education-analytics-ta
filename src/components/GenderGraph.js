@@ -7,7 +7,7 @@ const GenderGraph = props => {
 
   const genderArr =  makeEntries(props.gender)
 
-  //formats the gender array into required data format
+  //formats the gender array into nivo required data format
   const genderDataToFeed = genderArr => {
     const gender_data = []
 
@@ -25,9 +25,7 @@ const GenderGraph = props => {
 
     for (let i=0; i<genderArr.length; i++) {
       let element = genderArr[i]
-
       if (element[1].student) {
-
        if (element[1].student.demographics.women && element[1].student.demographics.men) {
 
         let womenDataPoint = {

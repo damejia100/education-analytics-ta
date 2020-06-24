@@ -9,7 +9,6 @@ const ref = React.createRef();
 const App = () => {
   return (
     <div className="app">
-
       <div className="action-buttons">
         <Pdf
           targetRef={ref}
@@ -24,9 +23,9 @@ const App = () => {
 
       </div>
 
-      <div className="school-wrapper" ref={ref}>
-        <SchoolInfo/>
-      </div>
+        <div className="school-wrapper" ref={ref}>
+          <SchoolInfo/>
+        </div>
     </div>
   );
 }

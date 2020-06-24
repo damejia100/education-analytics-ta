@@ -5,17 +5,20 @@ import { apiLink } from '../Helpers.js'
 import ProgramPie from './ProgramPie'
 import RaceEthnicityPie from './RaceEthnicityPie'
 import GenderGraph from './GenderGraph'
+import SchoolDetails from './SchoolDetails'
 
 class SchoolInfo extends React.Component {
   constructor () {
     super()
     this.state = {
-      name: '',
-      city: '',
-      state: '',
-      zip: '',
-      link: '',
-      enrolled: 0,
+      schoolInfo: {
+        name: '',
+        city: '',
+        state: '',
+        zip: '',
+        link: '',
+        enrolled: 0,
+      },
       programs: [],
       race_ethnicity: [],
       gender: []
@@ -33,12 +36,14 @@ class SchoolInfo extends React.Component {
       const latestData = data.results[0].latest
 
       this.setState({
-        name: schoolInfo.name,
-        city: schoolInfo.city,
-        state: schoolInfo.state,
-        zip: schoolInfo.zip,
-        link: schoolInfo.school_url,
-        enrolled: latestData.student.enrollment.grad_12_month + latestData.student.enrollment.undergrad_12_month,
+        schoolInfo: {
+          name: schoolInfo.name,
+          city: schoolInfo.city,
+          state: schoolInfo.state,
+          zip: schoolInfo.zip,
+          link: schoolInfo.school_url,
+          enrolled: latestData.student.enrollment.grad_12_month + latestData.student.enrollment.undergrad_12_month
+        },
         programs: latestData.academics.program_percentage,
         race_ethnicity: latestData.student.demographics.race_ethnicity,
         gender: data.results[0]
@@ -51,19 +56,7 @@ class SchoolInfo extends React.Component {
   render() {
     return (
       <div className="school-data">
-        <div className="school-details">
-          <h1>{this.state.name}</h1>
-          <h2>{this.state.city}, {this.state.state}, {this.state.zip}</h2>
-          <p>Total Enrolled: {this.state.enrolled}</p>
-          <a
-            className="school-link"
-            href={`//${this.state.link}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Visit School Site
-          </a>
-        </div>
+        <SchoolDetails schoolInfo={this.state.schoolInfo}/>
 
         <div className="school-visuals">
           <div className="pie-charts">
