@@ -55,7 +55,6 @@ class SchoolData extends React.Component {
     return (
       <div className="school-data">
         <SchoolDetails schoolInfo={this.state.schoolInfo}/>
-        <p>Amounts displayed are percetanges. Hover over smaller slices to see figures.</p>
 
         <div className="school-visuals">
           <div className="pie-charts">
